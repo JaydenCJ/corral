@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="452" viewBox="0 0 900 452" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
+  <rect width="900" height="452" rx="10" fill="#0d1117"/>
+  <rect width="900" height="34" rx="10" fill="#161b22"/>
+  <rect y="20" width="900" height="14" fill="#161b22"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="17" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="17" r="6" fill="#27c93f"/>
+  <text x="450" y="22" fill="#8b949e" text-anchor="middle" font-size="12">corral — no-fork local model runner  (reproduce: vhs docs/assets/demo.tape)</text>
+  <g fill="#c9d1d9">
+    <text x="18" y="64"><tspan fill="#7ee787">$</tspan> corral serve --backend mock --port 11435 &amp;</text>
+    <text x="18" y="85" fill="#8b949e">corral serving on http://127.0.0.1:11435 (backend: mock)</text>
+
+    <text x="18" y="112"><tspan fill="#7ee787">$</tspan> curl -s localhost:11435/v1/chat/completions \</text>
+    <text x="18" y="130">    -d '{"model":"qwen","messages":[{"role":"user","content":"hi"}]}' | jq .</text>
+    <text x="18" y="151" fill="#8b949e">{"id":"chatcmpl-mock-qwen","object":"chat.completion",</text>
+    <text x="18" y="169" fill="#8b949e">"created":1700000000,"model":"qwen","choices":[{"index":0,</text>
+    <text x="18" y="187" fill="#8b949e">"message":{"role":"assistant","content":"[qwen] echo: hi"},</text>
+    <text x="18" y="205" fill="#8b949e">"finish_reason":"stop"}],"usage":{"prompt_tokens":8,</text>
+    <text x="18" y="223" fill="#8b949e">"completion_tokens":15,"total_tokens":23}}</text>
+
+    <text x="18" y="250"><tspan fill="#7ee787">$</tspan> curl -s localhost:11435/v1/chat/completions \</text>
+    <text x="18" y="268">    -d '{"model":"llama", ...}' | jq .model   <tspan fill="#d2a8ff"># hot-swap</tspan></text>
+    <text x="18" y="286" fill="#8b949e">"llama"</text>
+
+    <text x="18" y="313"><tspan fill="#7ee787">$</tspan> corral ps</text>
+    <text x="18" y="334" fill="#8b949e">MODEL   PORT    PID     RESTARTS</text>
+    <text x="18" y="352" fill="#c9d1d9">llama   42833   16119   0</text>
+    <text x="18" y="370" fill="#8b949e"># qwen was LRU-evicted (max-loaded=1); no fork, no registry</text>
+
+    <text x="18" y="400"><tspan fill="#7ee787">$</tspan> <tspan fill="#c9d1d9">_</tspan></text>
+  </g>
+</svg>

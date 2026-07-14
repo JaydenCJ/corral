@@ -1,0 +1,56 @@
+{
+  "name": "corral",
+  "version": "0.1.0",
+  "description": "The no-fork local model runner: an open-source Ollama alternative that drives your own upstream llama.cpp and MLX behind an OpenAI-compatible API.",
+  "type": "module",
+  "bin": {
+    "corral": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh.md",
+    "README.ja.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/cli.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "smoke": "bash scripts/smoke.sh",
+    "corral": "tsx src/cli.ts"
+  },
+  "keywords": [
+    "llama.cpp",
+    "gguf",
+    "openai-compatible",
+    "local-llm",
+    "ollama-alternative",
+    "mlx"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "author": "JaydenCJ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaydenCJ/corral.git"
+  },
+  "homepage": "https://github.com/JaydenCJ/corral#readme",
+  "bugs": {
+    "url": "https://github.com/JaydenCJ/corral/issues"
+  }
+}
